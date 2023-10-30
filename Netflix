@@ -10,24 +10,8 @@ import org.testng.annotations.Test;
 
 public class Netflix {
 
-	@Parameters({"emailID","password","browser"})
-	@Test 
-	
-	public static void netflixLogin(String mailid, String passkey, String browser) throws InterruptedException {
-		RemoteWebDriver driver = null ;
-		switch (browser) {
-		case "chrome":
-			driver = new ChromeDriver();
-			break;
-
-		case "firefox":
-			driver = new FirefoxDriver();
-			break;
-
-		default:
-			break;
-		}
-		
+	public static void main(String [] args) throws InterruptedException {
+		Chromedriver driver = new ChromeDriver();
 		driver.get("https://www.google.com");
 		driver.get("https://www.netflix.com/in/login");
 
@@ -35,10 +19,10 @@ public class Netflix {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 		WebElement emailmobile = driver.findElementByXPath("//input[@id='id_userLoginId']");
-		emailmobile.sendKeys(mailid, Keys.TAB);
+		emailmobile.sendKeys("Umaiyar147@gmail.com", Keys.TAB);
 
 		WebElement password = driver.findElementByXPath("//input[@id='id_password']");
-		password.sendKeys(passkey,Keys.TAB);
+		password.sendKeys("Passkey@1234",Keys.TAB);
 
 		WebElement submit = driver.findElementByXPath("//button[@type='submit']");
 		submit.click();
