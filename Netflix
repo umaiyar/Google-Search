@@ -19,7 +19,7 @@ public class Netflix {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 		WebElement emailmobile = driver.findElementByXPath("//input[@id='id_userLoginId']");
-		emailmobile.sendKeys("Umaiyar147@gmail.com", Keys.TAB);
+		emailmobile.sendKeys("gowsalya28@gmail.com", Keys.TAB);
 
 		WebElement password = driver.findElementByXPath("//input[@id='id_password']");
 		password.sendKeys("Passkey@1234",Keys.TAB);
