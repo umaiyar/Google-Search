@@ -1,0 +1,52 @@
+package TestNG;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
+
+public class Netflix {
+
+	@Parameters({"emailID","password","browser"})
+	@Test 
+	
+	public static void netflixLogin(String mailid, String passkey, String browser) throws InterruptedException {
+		RemoteWebDriver driver = null ;
+		switch (browser) {
+		case "chrome":
+			driver = new ChromeDriver();
+			break;
+
+		case "firefox":
+			driver = new FirefoxDriver();
+			break;
+
+		default:
+			break;
+		}
+		
+		driver.get("https://www.google.com");
+		driver.get("https://www.netflix.com/in/login");
+
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+		WebElement emailmobile = driver.findElementByXPath("//input[@id='id_userLoginId']");
+		emailmobile.sendKeys(mailid, Keys.TAB);
+
+		WebElement password = driver.findElementByXPath("//input[@id='id_password']");
+		password.sendKeys(passkey,Keys.TAB);
+
+		WebElement submit = driver.findElementByXPath("//button[@type='submit']");
+		submit.click();
+
+		Thread.sleep(5000);
+
+		driver.quit();
+
+	}
+
+}
